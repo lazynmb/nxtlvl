@@ -1,0 +1,135 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-quote
+include ../components/_ui-box-comment
+
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Blog Post'
+
+block page 
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-about'
+	})
+
+	// Section Shop
+	section.section.section-xl.bg-default.text-md-left
+		.container: .row.row-50.row-md-60
+			.col-lg-8.col-xl-9: .inset-xl-right-100
+				.row.row-50.row-md-60.row-lg-80
+					.col-12
+						article.post.post-modern.box-xxl
+							.post-modern-panel
+								div: a.post-modern-tag( href='#' ) News
+								div: time.post-modern-time(datetime='2020-09-08') August 9, 2020
+							h3.post-modern-title Bandio Tour: Over 30 Cities and 20 States
+							.post-modern-figure: +jpg('post-7-800x394')
+							p.post-modern-text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In fermentum et sollicitudin ac orci. Etiam erat velit scelerisque in dictum non consectetur. Ante in nibh mauris cursus mattis. Lorem mollis aliquam ut porttitor leo a diam. Odio euismod lacinia at quis. 
+							p.post-modern-text Sed vulputate mi sit amet mauris commodo quis imperdiet. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Morbi tincidunt ornare massa eget egestas purus viverra. Duis at consectetur lorem donec massa. Adipiscing bibendum est ultricies integer. Adipiscing diam donec adipiscing tristique risus nec feugiat. Facilisi etiam dignissim diam quis. Diam vulputate ut pharetra sit amet aliquam id diam maecenas. Id nibh tortor id aliquet lectus proin nibh. 
+						+quote-classic({
+							mod: 'quote-classic-2',
+							text: 'Bandio Tour will cover almost all states of the US and provinces of Canada throughout 2020.'
+						})
+
+						p Placerat orci nulla pellentesque dignissim enim. Scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada. Tristique senectus et netus et malesuada fames ac. Ullamcorper eget nulla facilisi etiam dignissim diam quis. Eget mi proin sed libero enim sed faucibus turpis in.
+
+						.single-post-bottom-panel
+							.group-sm.group-justify
+								div: .group-sm.group-tags
+									a.link-tag( href='#' ) News
+									a.link-tag( href='#' ) Articles 
+									a.link-tag( href='#' ) Events
+								div: .group-xs.group-middle
+									span.list-social-title Share
+									div: +widget-list([], '', 'list-social list-inline-sm')
+
+					.col-12
+						h6.single-post-title Related Posts
+						.row.row-30
+							.col-sm-6
+								+post-classic({
+									img: 'post-1-370x239',
+									time: {
+										datetime: '2020-09-08',
+										dateText: 'August 9, 2020'
+									},
+									title: '“On The Block”: New Single from Bandio’s EP',
+									text: 'Eu augue ut lectus arcu bibendum at varius vel pharetra. Scelerisque felis imperdiet proin fermentum leo vel. '
+								})
+							.col-sm-6
+								+post-classic({
+									img: 'post-2-370x239',
+									time: {
+										datetime: '2020-09-08',
+										dateText: 'August 9, 2020'
+									},
+									title: 'The Secret of Success: Interview with RockNews',
+									text: 'Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Et molestie ac feugiat sed.'
+								})
+
+					.col-12
+						h6.single-post-title 3 Comments
+						+box-comment({
+							unit: 'unit-spacing-md',
+							img: 'user-1-119x119',
+							author: 'Kate Williams',
+							text: 'Lorem ipsum dolor sit amet, has mutat labores nostrum ei. Duo te blandit erroribus, ut sea ipsum nonumy, mel no ignota accusamus gloriatur. Id has habeo regione, explicari hendrerit reprimique cum te.',
+							time: {
+								datetime: '2020-08-30',
+								dateText: 'Aug 30, 2020'
+							}
+						})
+
+							+box-comment({
+								unit: 'unit-spacing-md',
+								img: 'user-2-119x119',
+								author: 'Sam Harrison',
+								text: 'Faucibus ornare suspendisse sed nisi lacus. Nisl nisi scelerisque eu ultrices vitae auctor eu augue. Sed tempus urna ',
+								time: {
+									datetime: '2020-08-30',
+									dateText: 'Aug 30, 2020'
+								}
+							})
+
+						+box-comment({
+							unit: 'unit-spacing-md',
+							img: 'user-3-119x119',
+							author: 'Jack Stevens',
+							text: 'Non blandit massa enim nec dui nunc mattis enim ut. Habitant morbi tristique senectus et netus et malesuada fames ac. Pellentesque habitant morbi tristique senectus et netus et.',
+							time: {
+								datetime: '2020-08-30',
+								dateText: 'Aug 30, 2020'
+							}
+						})
+
+					.col-12
+						h6.single-post-title Leave a comment
+						form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+							.row.row-20.row-md-30
+								.col-sm-6: .form-wrap
+									input#contact-first-name-2.form-input(type='text' name='name' data-constraints='@Required')
+									label.form-label(for='contact-first-name-2') First Name
+
+								.col-sm-6: .form-wrap
+									input#contact-last-name-2.form-input(type='text' name='name' data-constraints='@Required')
+									label.form-label(for='contact-last-name-2') Last Name
+
+								.col-12: .form-wrap
+									label.form-label(for='contact-message-2') Message
+									textarea#contact-message-2.form-input.textarea-lg(name='phone' data-constraints='@Required')
+
+							button.button.button-lg.button-primary.button-zakaria(type='submit') Submit
+
+			.col-lg-4.col-xl-3: include ../includes/_aside-blog
+	='\n'
+
+	// Page Footer
+	include ../sections/_footer-classic

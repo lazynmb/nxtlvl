@@ -1,0 +1,71 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-counters
+
+block variables
+	- var activeCategory = 'elements'
+	- var pageName = 'Counters'
+
+block page 
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-about'
+	})
+
+	// Counter Classic
+	section.section.section-xl.bg-default
+		.container
+			.row.row-30.justify-content-center.bordered-1
+				.col-sm-4
+					+counter-classic({
+						number: '5',
+						title: 'Studio  <br class="d-none d-sm-block"> Albums'
+					})
+				.col-sm-4
+					+counter-classic({
+						number: '27',
+						symbol: 'm',
+						title: 'Views<br class="d-none d-sm-block"> worldwide'
+					})
+				.col-sm-4
+					+counter-classic({
+						number: '35',
+						title: 'Music<br class="d-none d-sm-block"> awards'
+					})
+	='\n'
+
+	// Counter Modern
+	+parallax({
+		img: 'bg-about-1',
+		innerClass: 'section-xxl'
+	})
+		.container: .row.row-30.justify-content-center
+			.col-6.col-sm-3
+				+counter-modern({
+					number: '245',
+					title: 'Singles and<br class="d-none d-sm-block"> albums'
+				})
+			.col-6.col-sm-3
+				+counter-modern({
+					number: '382',
+					title: 'Tours and<br class="d-none d-sm-block"> festivals'
+				})
+			.col-6.col-sm-3
+				+counter-modern({
+					number: '1267',
+					title: 'Viewers and<br class="d-none d-sm-block"> fans'
+				})
+			.col-6.col-sm-3
+				+counter-modern({
+					number: '474',
+					title: 'Music awards<br class="d-none d-sm-block"> and prizes'
+				})
+	='\n'
+
+	// Page Footer
+	include ../sections/_footer-classic

@@ -1,0 +1,64 @@
+mixin header-corporate
+	header.section.page-header.page-header-corporate
+		// RD Navbar
+		.rd-navbar-wrap
+			nav.rd-navbar.rd-navbar-corporate(
+			data-layout=                'rd-navbar-fixed'
+			data-sm-layout=             'rd-navbar-fixed'
+			data-md-layout=             'rd-navbar-fixed'
+			data-md-device-layout=      'rd-navbar-fixed'
+			data-lg-layout=             'rd-navbar-static'
+			data-lg-device-layout=      'rd-navbar-fixed'
+			data-xl-layout=             'rd-navbar-static'
+			data-xl-device-layout=      'rd-navbar-static'
+			data-xxl-layout=            'rd-navbar-static'
+			data-xxl-device-layout=     'rd-navbar-static'
+			data-lg-stick-up-offset=    '154px'
+			data-xl-stick-up-offset=    '182px'
+			data-xxl-stick-up-offset=   '214px'
+			data-lg-stick-up=           'true'
+			data-xl-stick-up=           'true'
+			data-xxl-stick-up=          'true')
+				.rd-navbar-collapse-toggle.rd-navbar-fixed-element-1(data-rd-navbar-toggle='.rd-navbar-collapse'): span
+				a(href='cart-page.html').rd-navbar-basket.rd-navbar-basket-mobile.fl-bigmug-line-shopping202.rd-navbar-fixed-element-2: span 2
+				.rd-navbar-aside-outer: .rd-navbar-aside
+						p Opening times: Monday - Friday: 08AM-06PM
+
+						div: .group-xs.group-middle
+							p.rd-navbar-basket-text Your Cart is Empty
+							// RD Navbar Basket
+							include ../includes/_header-cart
+
+				.rd-navbar-main-outer: .rd-navbar-main
+					.rd-navbar-main-element
+						// RD Navbar Panel
+						.rd-navbar-panel
+							// RD Navbar Toggle
+							button.rd-navbar-toggle(data-rd-navbar-toggle='.rd-navbar-nav-wrap'): span
+
+							// RD Navbar Brand
+							.rd-navbar-brand: +logo
+
+						.rd-navbar-collapse
+							ul.contacts-amber
+								li
+									a( href='#' ) 523 Sylvan Ave, 5th Floor
+										br
+										| Mountain View, CA 94041 USA
+								li
+									a( href='tel:#' ) +1 (844) 123 456 78
+									br
+									a( href='mailto:#' ) info@demolink.org
+
+					.rd-navbar-nav-wrap
+						// RD Navbar Search
+						.rd-navbar-search
+							button.rd-navbar-search-toggle(data-rd-navbar-toggle='.rd-navbar-search'): span
+							form.rd-search(action='search-results.html' data-search-live='rd-search-results-live' method='GET')
+								.form-wrap
+									label.form-label(for='rd-navbar-search-form-input') Search...
+									input(class='rd-navbar-search-form-input form-input' id='rd-navbar-search-form-input' type='text' name='s' autocomplete="off")
+									#rd-search-results-live.rd-search-results-live
+									button.rd-search-form-submit.fl-bigmug-line-search74(type='submit')
+
+						include ../includes/_navigation

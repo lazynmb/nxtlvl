@@ -1,0 +1,55 @@
+extends  ../_skeleton
+include ../sections/_footer-creative
+
+block variables
+	- var activeCategory = 'elements'
+	- var pageName = 'Buttons'
+
+block page 
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-about'
+	})
+
+	// Button Sizes
+	section.section.section-lg.section-first.bg-default.text-md-left
+		.container
+			h3 Button Sizes
+			.group-xs.group-middle
+				.button.button-lg.button-primary.button-zakaria Large size
+				.button.button-primary.button-zakaria Medium size
+				.button.button-sm.button-primary.button-zakaria Small size
+	='\n'
+
+	// Buttons with Icons
+	section.section.section-lg.bg-default.text-md-left
+		.container
+			h3 Buttons with Icons
+			.group-xs.group-middle
+				.button.button-lg.button-icon.button-icon-left.button-primary.button-zakaria
+					span.icon.mdi.mdi-arrow-right
+					| Read more
+				.button.button-lg.button-icon.button-icon-left.button-default-outline
+					span.icon.mdi.mdi-arrow-right
+					| Read more
+	='\n'
+
+	// Buttons with Shadow
+	section.section.section-lg.section-last.bg-default.text-md-left
+		.container 
+			h3 Buttons with Shadows
+			.group-xs.group-middle
+				.button.button-lg.button-icon.button-icon-left.button-shadow.button-primary.button-zakaria
+					span.icon.mdi.mdi-arrow-right
+					| Read more
+				.button.button-lg.button-icon.button-icon-left.button-shadow.button-default-outline
+					span.icon.mdi.mdi-arrow-right
+					| Read more
+	='\n'
+
+	// Page Footer
+	include ../sections/_footer-classic

@@ -1,0 +1,207 @@
+extends  ../_skeleton
+
+//- Includes
+include ../sections/_header-creative
+include ../components/_ui-product
+include ../components/_ui-team
+include ../components/_ui-counters
+include ../components/_ui-quote
+include ../components/_ui-events
+include ../components/_ui-card
+include ../components/_ui-thumbnail
+include ../components/_ui-inline-subscribe-form
+include ../components/_ui-posts
+include ../components/_player-item
+include ../sections/_google-map
+include ../includes/_contact-form
+include ../sections/_footer-creative
+
+block variables
+	-
+		var
+		activeCategory = 'home',
+		pageName = 'Home';
+
+
+block page
+	// Page Header
+	+header-creative({
+		mod: 'header-creative-wrap'
+	})
+
+	+parallax({
+		img: 'home-10-1920x1090',
+		innerClass: 'text-center'
+	}).section-custom-1
+		.section-md
+			.container
+				.box-info-renee-decor
+				.box-info-renee-subtitle.wow.fadeInLeft New Album in stores!
+				h1.box-info-renee-title.wow.fadeScale Bandio
+				
+				a.link-classic.link-classic-md.box-info-renee-link.wow.fadeInUp( href='#' ) Buy now
+	='\n'
+
+	// Section
+	section.section.section-xxl.bg-default.text-left
+		.container
+			.heading-7 2020
+			h2 Listen to New album “Your Future”
+			.row.row-content-1
+				.col-xl-11.offset-xl-1
+					.player-list
+						+player-item({
+							trackCounter: '0',
+							title: '1. Time To Shine',
+							srcMp3: 'audio/sound-1.mp3'
+						})
+						+player-item({
+							trackCounter: '1',
+							title: '2. Create Your Future (feat. Jane K)',
+							srcMp3: 'audio/sound-2.mp3'
+						})
+						+player-item({
+							trackCounter: '2',
+							title: '3. This City Never Sleeps',
+							srcMp3: 'audio/sound-3.mp3'
+						})
+						+player-item({
+							trackCounter: '3',
+							title: '4. A Call From Bandio Square ',
+							srcMp3: 'audio/sound-1.mp3'
+						})
+						+player-item({
+							trackCounter: '4',
+							title: '5. Through Glass',
+							srcMp3: 'audio/sound-2.mp3'
+						})
+						+player-item({
+							trackCounter: '5',
+							title: '6. Say You’ll Haunt Me (feat. Emma Smith)',
+							srcMp3: 'audio/sound-3.mp3'
+						})
+						+player-item({
+							trackCounter: '6',
+							title: '7. Last Of The Real',
+							srcMp3: 'audio/sound-1.mp3'
+						})
+						+player-item({
+							trackCounter: '7',
+							title: '8. When The Fever Broke',
+							srcMp3: 'audio/sound-2.mp3'
+						})
+
+					.button-group-1
+						a.button.button-primary( href='#' ) Get physical
+						a.button.button-default-outline( href='#' ) Get digital
+
+
+
+	// About Us
+	section.section.section-xxl.bg-primary.context-dark.text-md-left
+		.container
+			h2
+				| About
+				br
+				| Bandio
+			.row.row-30.row-content-1
+				.col-md-6.col-xl-5.offset-xl-1
+					h6 Founded in 1999, Bandio is a unique blend of metalcore, symphonic rock, and electronic music.
+					p What eventually became an award-winning metal band, started as a free-time project back in 1999 by four friends. Harry Peters & John Moore teamed up with their college friends Sam Adams and Edward Emerson to make music that will break all known boundaries years after.
+				.col-md-6.col-xl-4.offset-xl-1.wow.fadeIn
+					.img-responsive
+						+img( 'home-01-370x460' ).image-offset-1
+
+	// Preview
+	section.section.section-xxl.bg-default
+		.container
+			.row.row-30
+				.col-xs-6.col-xl-4.offset-xl-1.wow.fadeIn
+					+img( 'home-02-370x370' )
+				.col-xs-6.col-xl-4.offset-xl-1
+					+img( 'home-03-370x280' ).image-offset-2.wow.fadeIn
+
+	// Tours
+	section.section.section-xxl.bg-default.text-left
+		.container
+			.heading-7 2021
+			h2.title-modify Future WORLDWIde TOUR
+			.row.row-30
+				.col-md-10.col-lg-8.col-xl-7.offset-lg-1
+					+event-minimal({
+						country: 'MELBOURNE, AU',
+						place: 'Rod Laver Arena',
+						date: 'january 25, 2021'
+					})
+					+event-minimal({
+						country: 'WASHINGTON, DC, USA',
+						place: 'Capital One Arena',
+						date: 'january 27, 2021'
+					})
+					+event-minimal({
+						country: 'Belo Music Fest',
+						place: 'LA Arena Theater',
+						date: 'january 29, 2021'
+					})
+					+event-minimal({
+						country: 'CHICAGO, IL, USA',
+						place: 'United Center',
+						date: 'january 31, 2021'
+					})
+
+	// Video post
+	section.section.section-xxl.bg-default.text-left
+		.container
+			.row.row-30.justify-content-center.justify-content-xl-start
+				.col-md-10.col-lg-9.col-xl-8.offset-lg-1.offset-xl-3
+					+post-video({
+						img: 'home-04-770x450',
+						videoLink: 'https://www.youtube.com/embed/Bd-y2CXjT14',
+						title: 'Through Glass (Official Video)'
+					})
+				.col-md-10.col-lg-9.col-xl-8
+					+post-video({
+						img: 'home-05-770x450',
+						videoLink: 'https://www.youtube.com/embed/Bd-y2CXjT14',
+						title: 'Time To Shine (Official Video)'
+					})
+
+	// News blog
+	section.section.section-xxl.bg-primary.context-dark.text-sm-left
+		.container
+			h2 Latest news
+			+post-side({
+				img: 'home-06-370x270',
+				date: 'September 20, 2020',
+				title: 'New Single “Say You’ll Haunt Me” (feat. Emma Smith) is Out Now!',
+				text: 'Check out the latest single off Bandio’s latest album - “Say You’ll Haunt Me”. Written in collaboration with Emma Smith, a talented jazz singer, this track is “a brand new experiment for the band”, quoting John Moore, one of the band members.'
+			})
+			+post-side({
+				img: 'home-07-370x270',
+				date: 'September 20, 2020',
+				title: 'Watch The Official Video for “Time to Shine” directed by James Lee',
+				text: '“Time To Shine”, one of the biggest tracks off  “Your Future” album, has recently got its music video. Directed by James Lee who has been collaborating with Bandio for years, this video will undoubtedly blow you away, even if you are the band’s fan since its foundation.'
+			})
+			a.button.button-default-outline( href='grid-blog.html' ) More news
+
+	// Merch
+	section.section.section-xxl.bg-default.text-md-left
+		.container
+			.row.row-40
+				.col-md-6
+					h2.title-modify Exclusive #[br]merch
+					.row.row-30.row-content-2
+						.col-lg-10.offset-lg-2
+							h6 The best way to show how you love Bandio and their music is to buy exclusive merch on our website.
+							p Whether you are a hardcore fan of the band or just discovered Bandio’s music, we have a lot of merch to offer you. From t-shirts and jerseys to sweatpants and pullovers, at our online store, any metalhead and Bandio fan can choose whatever they need.
+							a.button.button-primary( href='#' ) Visit store
+				.col-md-6.col-lg-5.offset-lg-1.text-md-right
+					.row.row-30.row-lg-60
+						.col-lg-8.offset-lg-4
+							+img( 'home-08-270x270' )
+						.col-lg-10
+							+img( 'home-09-370x280' )
+
+
+	// Page Footer
+	include ../sections/_footer-classic

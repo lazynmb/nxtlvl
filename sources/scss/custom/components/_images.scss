@@ -1,0 +1,27 @@
+/** @section Images */
+
+// Standard img style
+img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+
+.img-responsive {
+	display: inline-block;
+	max-width: 320px;
+}
+
+@include media-breakpoint-up(md) {
+	.image-offset-1 {
+		margin-bottom: -40%;
+	}
+
+	.image-offset-2 {
+		margin-top: 47%;
+	}
+
+	.img-responsive {
+		max-width: 100%;
+	}
+}

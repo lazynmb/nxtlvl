@@ -1,0 +1,43 @@
+mixin footer-creative( obj )
+	- obj = obj || {};
+
+	footer.section.footer-creative( class= obj.mod )
+		.footer-classic-body.section-lg.section-inset-4( class= obj.bodyMod )
+			.container
+				
+				.row.row-40.row-md-50.justify-content-sm-between
+					.col-lg-5.wow.fadeInRight
+						.inset-xl-right-55
+							h4.footer-creative-title About us
+							p= obj.text
+							.group-sm.group-middle
+								a.button.button-shadow-2.button-gray-800.button-zakaria( href='grid-fullwidth-gallery.html' ) View albums
+								a.button.button-shadow-2.button-white.button-zakaria( href='grid-blog.html' ) View events
+
+					.col-sm-6.col-lg-3.wow.fadeInRight( data-wow-delay='.1s' )
+						h4.footer-creative-title Contacts
+						ul.contacts-holly
+							li
+								.contacts-holly-title Phone
+								.contacts-holly-text: a( href='tel:#' ) +1 (844) 123 456 78
+
+							li
+								.contacts-holly-title Address
+								.contacts-holly-text
+									a( href='#' ) 523 Sylvan Ave, 5th Floor
+										br
+										| Mountain View, CA 94041 USA
+
+							li
+								.contacts-holly-title E-mail
+								.contacts-holly-text: a( href='mailto:#' ) info@demolink.org
+
+					.col-sm-5.col-lg-2.wow.fadeInRight( data-wow-delay='.2s' )
+						h4.footer-creative-title Menu
+						ul.footer-creative-list
+							each itemList in obj.list
+								li: a( href=itemList.link )=itemList.text
+
+		.footer-creative-panel: .container: .row.row-10.align-items-center.justify-content-sm-between
+			.col-sm-auto: +rights
+			.col-sm-auto: +widget-list([], '', 'list-social list-inline-sm')

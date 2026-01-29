@@ -1,0 +1,91 @@
+-
+	var
+		htmlClass = "wide wow-animation",
+		fonts = "//fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap",
+		subscribeFormCounter = 0,
+		debug = false,
+		checkoutFormCounter = 0,
+		logo = {
+			default: 'logo-default-391x41.png',
+			inverse: 'logo-inverse-391x41.png',
+			name: 'Bandio'
+		},
+		links = {
+			about: 'bio.html', 
+			post: 'blog-post.html',
+			shop: '#',
+			product: 'single-product.html',
+			service: '#',
+			team: '#',
+			getTemplate:'#get-template'
+		},
+		colors = {
+			primary: '#b6c062',
+			secondary: '#b6c062'
+		},
+		menu = [
+			{
+				title: 'Home',
+				category: 'home', 
+				link: 'index.html'
+			},
+			{
+				title: 'Pages',
+				category: 'pages',
+				link: '#',
+				dropdown: [
+					{ title: 'Bio' },
+					{ title: 'Events' }
+				]
+			},
+			{
+				title: 'Blog',
+				category: 'blog',
+				link: 'grid-blog.html',
+				dropdown: [
+					{ title: 'Blog Post' }
+				]
+			},
+			{
+				title: 'Gallery',
+				category: 'gallery',
+				link: 'discography.html'
+			},
+			{
+				title: 'Elements',
+				category: 'elements',
+				link: '#',
+				megamenu: [
+					{
+						title: 'Elements',
+						listClass: 'rd-megamenu-list-2',
+						list: [
+							{ title: 'Typography' }, 
+							{ title: 'Icon lists' }, 
+							{ title: 'Progress bars' },
+							{ title: 'Calls to action' },
+							{ title: 'Tabs & accordions', link: 'tabs-and-accordions.html' },
+							{ title: 'Buttons' },
+							{ title: 'Tables' },
+							{ title: 'Forms' },
+							{ title: 'Counters' },
+							{ title: 'Grid system' }
+						]
+					},
+					{
+						title: 'Additional pages',
+						itemClass: '',
+						list: [
+							{ title: '404 Page' },
+							{ title: 'Coming Soon' },
+							{ title: 'Contacts' },
+							{ title: 'Privacy Policy' }
+						]
+					}
+				]
+			},
+			{
+				title: 'Contacts',
+				category: 'contacts'
+			}
+		];

@@ -1,0 +1,51 @@
+extends  ../_skeleton
+
+//- Includes
+
+include ../components/_ui-events
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Events'
+
+block page  
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-about',
+		text: 'Vitae justo eget magna fermentum commodo sed egestas egestas   <br class="d-none d-md-block">fringilla phasellus faucibus scelerisque eleifend.'
+	})
+
+	// Tours
+	section.section.section-xxl.bg-default.text-left
+		.container
+			.heading-7 2021
+			h2.title-modify Future WORLDWIde TOUR
+			.row.row-30
+				.col-md-10.col-lg-8.col-xl-7.offset-lg-1
+					+event-minimal({
+						country: 'MELBOURNE, AU',
+						place: 'Rod Laver Arena',
+						date: 'january 25, 2021'
+					})
+					+event-minimal({
+						country: 'WASHINGTON, DC, USA',
+						place: 'Capital One Arena',
+						date: 'january 27, 2021'
+					})
+					+event-minimal({
+						country: 'Belo Music Fest',
+						place: 'LA Arena Theater',
+						date: 'january 29, 2021'
+					})
+					+event-minimal({
+						country: 'CHICAGO, IL, USA',
+						place: 'United Center',
+						date: 'january 31, 2021'
+					})
+
+	// Page Footer
+	include ../sections/_footer-classic

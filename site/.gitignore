@@ -1,0 +1,22 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Logi i śmieci
+*.log
+*.tmp
+*.swp
+
+# Sekrety (jeśli kiedykolwiek dodasz)
+.env
+.env.*
+!.env.example
+
+# VS Code (opcjonalnie)
+.vscode/
+
+node_modules/
+dist/
+build/
+.cache/
+.vite/

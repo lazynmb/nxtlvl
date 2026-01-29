@@ -1,0 +1,34 @@
+mixin thumbnail-classic(obj)
+	// Thumbnail Classic
+	article.thumbnail-classic( class= obj.mod )&attributes(attributes)
+		if( obj.price )
+			.thumbnail-classic-figure: +jpg( obj.img )
+		else if(obj.discography)
+			.thumbnail-classic-figure: +jpg( obj.img ) 
+		else
+			a.thumbnail-classic-figure(href='images/' + obj.imgOriginal + '.jpg' data-lightgallery='item'): +jpg( obj.img )
+
+		.thumbnail-classic-caption: div
+			if (obj.gallery)
+				h5.thumbnail-classic-title: a(href="#")=obj.title
+			else
+				h5.thumbnail-classic-title: a(href=links.product)=obj.title
+			if( obj.price )
+				.thumbnail-classic-price= obj.price
+				.thumbnail-classic-button-wrap
+					.thumbnail-classic-button: a.button.button-white.fl-bigmug-line-search74(href='images/' + obj.imgOriginal + '.jpg' data-lightgallery='item'): +jpg( obj.img )
+					
+			else if( obj.tag )
+				.thumbnail-classic-tag= obj.tag
+			else if(obj.gallery)
+				.thumbnail-classic-price= obj.year
+				.thumbnail-classic-button-wrap
+					.thumbnail-classic-button: a.button.button-white(href='#'): span.mdi.mdi-google-play
+					.thumbnail-classic-button: a.button.button-white(href='#'): span.mdi.mdi-apple
+
+mixin thumbnail-modern(obj)
+	// Thumbnail Classic
+	article.thumbnail-modern( class= obj.mod )&attributes(attributes)
+		a.thumbnail-modern-figure(href='images/' + obj.imgOriginal + '.jpg' data-lightgallery='item'): +jpg( obj.img )
+		.thumbnail-modern-caption: div
+			h4.thumbnail-modern-title: a(href=links.product)=obj.title

@@ -1,0 +1,123 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+
+
+block variables
+	- var activeCategory = 'elements'
+	- var pageName = 'Icon Lists'
+
+block page  
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-about-1'
+	})
+
+	// Icons 1
+	section.section.section-lg.section-first.bg-default
+		.container
+			h2.font-weight-regular #1
+			.row.row-30.box-ordered
+				.col-sm-6.col-lg-3
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-hot67',
+						title: 'Fresh Music',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+					})
+						
+				.col-sm-6.col-lg-3
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-trophy55',
+						title: 'Lots of Awards',
+						text: 'Eu sem integer vitae justo eget magna. Pharetra magna ac placerat vestibulum lectus. '
+					})
+						
+				.col-sm-6.col-lg-3
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-circular220',
+						title: 'Free Downloads',
+						text: 'Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Leo a diam sollicitudin'
+					})
+					
+				.col-sm-6.col-lg-3
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-lock64',
+						title: 'Data Security',
+						text: 'Nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis. Congue eu consequat ac felis. '
+					})
+					
+	='\n'
+
+	// Icons 2
+	section.section.section-lg.bg-default
+		.container
+			h2.font-weight-regular #2
+			.row.row-30
+				.col-sm-6.col-lg-4
+					+box-icon-creative({
+						unit: 'flex-column flex-md-row flex-lg-column flex-xl-row align-items-md-center align-items-lg-start align-items-xl-center',
+						icon: 'fl-bigmug-line-big104',
+						title: 'Great Events',
+						text: 'Natoque penatibus et magnis'
+					})
+
+				.col-sm-6.col-lg-4
+					+box-icon-creative({
+						unit: 'flex-column flex-md-row flex-lg-column flex-xl-row align-items-md-center align-items-lg-start align-items-xl-center',
+						icon: 'fl-bigmug-line-chat55',
+						title: 'unique Style',
+						text: 'Auctor augue mauris augue '
+					})
+
+				.col-sm-6.col-lg-4
+					+box-icon-creative({
+						unit: 'flex-column flex-md-row flex-lg-column flex-xl-row align-items-md-center align-items-lg-start align-items-xl-center',
+						icon: 'fl-bigmug-line-like51',
+						title: 'Licensed Merch',
+						text: 'Pulvinar mattis nunc sed '
+					})
+	='\n'
+
+	// Icons 3
+	section.section.section-lg.section-last.bg-default
+		.container
+			h2.font-weight-regular #3
+			.row.row-30
+				.col-sm-6.col-md-4
+					+box-icon-classic({
+						mod: 'text-sm-left',
+						unit: 'flex-column flex-sm-row flex-md-column flex-xl-row',
+						icon: 'fl-bigmug-line-hot67',
+						title: 'Music',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+					})
+						
+
+				.col-sm-6.col-md-4
+					+box-icon-classic({
+						mod: 'text-sm-left',
+						unit: 'flex-column flex-sm-row flex-md-column flex-xl-row',
+						icon: 'fl-bigmug-line-trophy55',
+						title: 'Awards',
+						text: 'Eu sem integer vitae justo eget magna. Pharetra magna ac placerat vestibulum lectus. '
+					})
+						
+
+				.col-sm-6.col-md-4
+					+box-icon-classic({
+						mod: 'text-sm-left',
+						unit: 'flex-column flex-sm-row flex-md-column flex-xl-row',
+						icon: 'fl-bigmug-line-circular220',
+						title: 'Downloads',
+						text: 'Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Leo a diam sollicitudin'
+					})
+						
+	='\n'
+
+	// Page Footer
+	include ../sections/_footer-classic

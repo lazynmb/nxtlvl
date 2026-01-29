@@ -1,0 +1,40 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'elements'
+	- var pageName = 'Calls to action'
+
+block page  
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory, 
+		path: [pageName],
+		bgImage: 'bg-about-1'
+	})
+
+	// Calls to action
+	section.section.section-xl.bg-gray-800
+		.container
+			h3.text-spacing-100 Special 
+				=' '
+				span.font-weight-light Offer
+			h6.font-weight-light Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+			a.button.button-lg.button-shadow-2.button-primary.button-zakaria( href='#' ) Learn More
+	='\n'
+
+	// Calls to action
+	section.section.section-xl.bg-primary.context-dark.text-md-left
+		.container: .row.row-30.align-items-center.justify-content-md-between
+			.col-md-6.col-lg-8
+				h3.text-spacing-100 Special 
+					=' '
+					span.font-weight-light Offer
+				h6.font-weight-light Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+			.col-md-auto
+				a.button.button-lg.button-shadow-2.button-default-outline.button-zakaria( href='#' ) Learn More
+	='\n'
+
+	// Page Footer
+	include ../sections/_footer-classic

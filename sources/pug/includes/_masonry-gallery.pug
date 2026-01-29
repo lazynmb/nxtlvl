@@ -1,0 +1,77 @@
+.isotope-wrap
+	.isotope-filters
+		//- Isotope Filters
+		button.isotope-filters-toggle.button.button-sm.button-icon.button-icon-right.button-default-outline(data-custom-toggle='.isotope-filters-list', data-custom-toggle-hide-on-blur='true')
+			span.icon.mdi.mdi-chevron-down
+			| Filter
+
+		.isotope-filters-list-wrap
+			ul.isotope-filters-list
+				li: a.active(href='#', data-isotope-filter='*') all Categories 
+				li: a(href='#', data-isotope-filter='Type 1') Events 
+				li: a(href='#', data-isotope-filter='Type 2') Tours     
+
+	.row.row-30.isotope.isotope-custom-1(data-lightgallery='group')
+		.col-sm-6.col-lg-4.col-xl-3.isotope-item(data-filter='Type 1')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-1-270x250',
+				imgOriginal: 'grid-gallery-2-1200x800-original',
+				title: 'Balaton Sound 2020',
+				price: 'September 2020'
+			})
+
+		.col-sm-6.col-lg-4.col-xl-3.isotope-item(data-filter='Type 2')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-2-270x530',
+				imgOriginal: 'masonry-gallery-2-1200x800-original',
+				title: 'Wireless Festival',
+				price: 'March 2020'
+			})
+
+		.col-sm-6.col-lg-4.col-xl-3.isotope-item(data-filter='Type 1')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-3-270x250',
+				imgOriginal: 'masonry-gallery-3-1200x800-original',
+				title: 'urban Dance Festival',
+				price: 'may 2020'
+			})
+
+		.col-sm-6.col-lg-4.col-xl-3.isotope-item(data-filter='Type 2')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-4-270x250',
+				imgOriginal: 'masonry-gallery-4-1200x800-original',
+				title: 'Bandio Square tour',
+				price: 'may 2020'
+			})
+
+		.col-sm-6.col-lg-4.col-xl-3.isotope-item(data-filter='Type 1')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-5-270x250',
+				imgOriginal: 'grid-gallery-3-1200x800-original',
+				title: 'Resistance Festival',
+				price: 'January 2020'
+			})
+
+		.col-sm-6.col-lg-4.col-xl-6.isotope-item(data-filter='Type 2')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-6-570x530',
+				imgOriginal: 'grid-fullwidth-gallery-2-1200x800-original',
+				title: 'Shake the city (world tour)',
+				price: 'March-April 2020'
+			})
+
+		.col-sm-6.col-lg-8.col-xl-6.isotope-item(data-filter='Type 1')
+			+thumbnail-classic({
+				gallery: 'true',
+				img: 'masonry-gallery-7-570x250',
+				imgOriginal: 'masonry-gallery-7-1200x800-original',
+				title: 'No Limits (European tour)',
+				price: 'February 2020'
+			})
+	

@@ -1,0 +1,58 @@
+mixin footer-corporate( obj )
+	- obj = obj || {};
+
+	footer.section.footer-corporate( class= obj.mod )
+		.footer-corporate-body.section-lg( class= obj.bodyMod )
+			.container
+				.row.row-40.row-md-50.justify-content-xl-between
+					.col-sm-6.col-lg-4.wow.fadeInRight
+						h5.footer-corporate-title Visit our farm
+						.footer-corporate-decor
+						ul.footer-corporate-info
+							li: .unit.flex-column.flex-sm-row.align-items-center
+								.unit-left: span.icon.mdi.mdi-map-marker
+								.unit-body
+									a( href='#' ) 523 Sylvan Ave, 5th Floor
+										br
+										| Mountain View, CA 94041 USA
+
+							li: .unit.flex-column.flex-sm-row.align-items-center
+								.unit-left: span.icon.mdi.mdi-clock
+								.unit-body
+									ul.list-schedule
+										li
+											span Weekdays:
+											span 08:00am - 08:00pm
+										li
+											span Weekends:
+											span 10:00am - 06:00pm
+
+					.col-sm-6.col-lg-4.wow.fadeInRight( data-wow-delay='.1s' )
+						h5.footer-corporate-title Quick links
+						.footer-corporate-decor
+						ul.footer-corporate-list.d-sm-inline-block.d-md-block
+							each itemList in obj.list
+								li: a( href='#' )=itemList.text
+
+					.col-lg-4.wow.fadeInRight( data-wow-delay='.2s' )
+						h5.footer-corporate-title Get in touch
+						.footer-corporate-decor
+						p.footer-corporate-text= obj.text
+						.group-sm.group-middle
+							a.button.button-shadow-2.button-gray-14.button-zakaria( href=links.shop ) Shop now
+							a.button.button-shadow-2.button-primary-2.button-zakaria( href='contacts.html' ) Contact us
+
+		.footer-corporate-panel: .container: .row.row-10.row-sm-30.align-items-center.justify-content-sm-between
+			.col-sm-auto.col-lg-4.text-lg-left: .group-xs.group-middle
+				+png('payment-1-45x15')
+				+png('payment-2-46x28')
+				+png('payment-3-62x17')
+			.col-sm-auto.col-lg-4
+				+widget-list([
+					{ href: '#', icon: 'icon mdi mdi-facebook' },
+					{ href: '#', icon: 'icon mdi mdi-twitter' },
+					{ href: '#', icon: 'icon mdi mdi-instagram' },
+					{ href: '#', icon: 'icon mdi mdi-google-plus' },
+					{ href: '#', icon: 'icon mdi mdi-skype' }
+				], '', 'list-social-4 list-inline-xs')
+			.col-lg-4.text-lg-right: +rights

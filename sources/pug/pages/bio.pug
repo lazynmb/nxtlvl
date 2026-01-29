@@ -1,0 +1,116 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-team
+include ../components/_ui-quote
+
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Bio'
+
+block page  
+	// Page Header
+	+header-classic: include ../includes/_aside-navbar-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-about',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  <br class="d-none d-md-block">eiusmod tempor incididunt ut labore et dolore magna '
+	})
+
+	// Section About
+	section.section.section-xl.bg-default.text-md-left
+		.container: .row.row-40.row-md-60.justify-content-center.align-items-xl-center.justify-content-lg-between
+			.col-md-11.col-lg-6.col-xl-5
+				h2 A Few words 
+					=' '
+					span.d-block.font-weight-light About Bandio
+				// Bootstrap tabs
+				#tabs-1.tabs-custom.tabs-horizontal.tabs-line
+					// Nav tabs
+					.nav-tabs-wrap: ul.nav.nav-tabs
+						li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-1-1' data-toggle='tab') About
+						li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-2' data-toggle='tab') Biography
+						li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-3' data-toggle='tab') Awards
+
+					// Tab panes
+					.tab-content
+						div#tabs-1-1.tab-pane.fade.show.active
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+							p In fermentum et sollicitudin ac orci. Etiam erat velit scelerisque in dictum non consectetur. Ante in nibh mauris cursus mattis.
+
+						div#tabs-1-2.tab-pane.fade
+							p Lorem mollis aliquam ut porttitor leo a diam. Odio euismod lacinia at quis. Integer quis auctor elit sed vulputate. 
+							p Enim nec dui nunc mattis. Convallis posuere morbi leo urna molestie at elementum eu. Sed odio morbi quis.
+
+						div#tabs-1-3.tab-pane.fade
+							p Sed vulputate mi sit amet mauris commodo quis imperdiet. Dolor sit amet consectetur adipiscing elit pellentesque
+							p Morbi tincidunt ornare massa eget egestas purus viverra. Duis at consectetur lorem donec massa. Adipiscing bibendum est. 
+
+				a.button.button-lg.button-shadow-2.button-primary.button-zakaria( href='#' ) Read more
+
+			.col-md-11.col-lg-6.col-xl-6
+				+img('about-1-634x484')
+	='\n'
+
+	// Section History
+	section.section.section-fluid.section-xl.section-bottom-0.bg-image-2.section-relative
+		.container-fluid
+			h2  History
+			.slick-history
+				// Slick Carousel
+				#carousel-parent-2.slick-slider.carousel-parent.context-dark( data-items='1' data-sm-items='2' data-md-items='2' data-lg-items='3' data-xl-items='3' data-xxl-items='4' data-autoplay='false' data-loop='false' )
+					.item: .box-info-classic
+						h4.box-info-classic-title First Tracks
+						p.box-info-classic-text Placerat orci nulla pellentesque dignissim enim. Scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada. 
+					.item: .box-info-classic
+						h4.box-info-classic-title National Success
+						p.box-info-classic-text Porta lorem mollis aliquam ut. Adipiscing tristique risus nec feugiat. At erat pellentesque adipiscing commodo elit at imperdiet.
+					.item: .box-info-classic
+						h4.box-info-classic-title Awards & Recognition
+						p.box-info-classic-text Ullamcorper eget nulla facilisi etiam dignissim diam quis. Eget mi proin sed libero enim sed faucibus turpis in. Eu augue ut.
+					.item: .box-info-classic
+						h4.box-info-classic-title First european Tour
+						p.box-info-classic-text Scelerisque felis imperdiet proin fermentum leo vel. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Et molestie ac.
+					.item: .box-info-classic
+						h4.box-info-classic-title New Tracks and US Tour
+						p.box-info-classic-text Facilisi etiam dignissim diam quis. Diam vulputate ut pharetra sit amet aliquam id diam maecenas. Id nibh tortor id aliquet lectus proin nibh. 
+
+				.slick-slider.child-carousel( data-items='1' data-sm-items='2' data-md-items='2' data-lg-items='3' data-xl-items='3' data-xxl-items='4' data-arrows='true' data-for='#carousel-parent-2' data-loop='false' data-focus-select='false' )
+					
+					.item: .heading-5.box-info-classic-year 2010
+					.item: .heading-5.box-info-classic-year 2013
+					.item: .heading-5.box-info-classic-year 2015
+					.item: .heading-5.box-info-classic-year 2017
+					.item: .heading-5.box-info-classic-year 2020
+	='\n'
+
+	// Our team
+	section.section.section-xl.bg-default
+		.container
+			h2 Who we are
+			// Owl Carousel
+			.owl-carousel( data-items='1' data-sm-items='2' data-md-items='3' data-margin='30' data-dots='true' data-autoplay='true' )
+				+team-classic({
+					img: 'team-1-370x334',
+					name: 'Richard Ferrand',
+					text: 'Mauris a diam maecenas sed enim ut. Leo in vitae turpis massa sed elementum tempus.'
+				})
+				
+				+team-classic({
+					img: 'team-2-370x334',
+					name: 'Ann  Lopez',
+					text: 'Integer quis auctor elit sed vulputate. Enim nec dui nunc mattis. Convallis'
+				})
+				+team-classic({
+					img: 'team-3-370x334',
+					name: 'Will Mcmillan',
+					text: 'Sed vulputate mi sit amet mauris commodo quis imperdiet. Dolor sit amet .'
+				})
+	='\n'
+
+	
+	// Page Footer
+	include ../sections/_footer-classic

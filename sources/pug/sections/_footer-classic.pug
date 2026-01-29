@@ -1,0 +1,16 @@
+footer.section.footer-classic.bg-default
+	.container
+		+logo( logo.default )
+		+widget-list([
+			{ link: '#', icon: 'icon mdi mdi-youtube-play' },
+			{ link: '#', icon: 'icon mdi mdi-facebook' },
+			{ link: '#', icon: 'icon mdi mdi-instagram' },
+			{ link: '#', icon: 'icon mdi mdi-twitter' }
+		], '', 'list-social list-inline-sm')
+		p.rights
+			span &copy;&nbsp;
+			span.copyright-year
+			span &nbsp;
+			span= logo.name
+			span .&nbsp; All rights reserved.&nbsp;
+			a(href='privacy-policy.html') Privacy Policy

@@ -1,0 +1,129 @@
+/** @section Links */
+
+// Standard link style
+a {
+	transition: $transition-base;
+
+	&,
+	&:focus,
+	&:active,
+	&:hover {
+		text-decoration: $link-decoration;
+	}
+
+	@include link($link-color, $link-hover-color);
+
+	&[href*='tel'],
+	&[href*='mailto'] {
+		white-space: nowrap;
+	}
+}
+
+.link-hover {
+	color: $link-hover-color;
+}
+
+.link-press {
+	color: $link-press-color;
+}
+
+.privacy-link {
+	display: inline-block;
+}
+
+* + .privacy-link { margin-top: 25px; }
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+
+	* + .privacy-link { margin-top: 45px; }
+}
+
+
+// Link underline
+.link-underline {
+	font-weight: 700;
+	font-size: $font-size-sm;
+	text-transform: uppercase;
+	text-decoration: underline;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+
+// Link tag
+.link-tag {
+	font-size: 12px;
+	line-height: 1;
+	font-weight: 600;
+	letter-spacing: .13em;
+	text-transform: uppercase;
+
+	@include link(inherit, $primary);
+}
+
+// Link Shop
+.link-shop { display: block; }
+
+// Link Custom Styles
+.link-classic {
+	position: relative;
+	display: inline-block;
+	font-size: 16px;
+	line-height: 1.9;
+	font-weight: 700;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	transition: all .25s ease;
+
+	@include link($primary, $body-color);
+
+	&::after {
+		display: block;
+		content: '';
+		height: 0;
+		width: 100%;
+		border-top: 2px solid;
+		transition: transform .2s ease;
+	}
+
+	&:hover {
+		letter-spacing: .3em;
+	}
+	&.link-classic-md {
+		font-size: 16px;
+	}
+}
+
+* + .link-classic {	margin-top: 20px; }
+*.row + .link-classic {	margin-top: 30px; }
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+
+	*.row + .link-classic {	margin-top: 45px; }
+}
+
+// Context Styling
+%context-dark {
+
+	.link-classic {
+
+		&,
+		&:active,
+		&:focus {
+			color: inherit;
+		}
+	}
+}
+
+.link-primary {
+	&,
+	&:active,
+	&:focus {
+		color: $primary;
+	}
+}

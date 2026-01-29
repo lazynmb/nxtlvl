@@ -1,0 +1,31 @@
+mixin event-classic(obj)
+	// Product
+	article.event-classic( class= obj.mod )&attributes(attributes)
+		.unit.unit-spacing-0.flex-column.flex-sm-row.align-items-sm-center
+			.unit-left.align-self-stretch: a.event-classic-figure( href='#' ): +jpg( obj.img ).event-classic-image
+			.unit-body.flex-grow-1
+				.event-classic-body
+					.unit.unit-spacing-sm.flex-column.flex-md-row-reverse.justify-content-md-between
+						.unit-left: block
+						.unit-body
+							h3.event-classic-title: a( href='#' )= obj.title
+							ul.event-classic-panel
+								li.event-classic-price
+									span.icon.fa.fa-ticket
+									span= obj.price 
+								li.event-classic-location
+									span.icon.fa.fa-location-arrow
+									a( href='#' )= obj.location
+							p.event-classic-text= obj.text
+							a.link-classic.event-classic-link( href='#' ) buy tickets
+
+mixin event-minimal(data)
+	.event-minimal
+		h4.event-minimal-title: a( href='#' )
+			= data.country
+			br
+			= data.place
+		h5.event-minimal-meta= data.date
+		.event-minimal-btns
+			a.button.button-default-outline( href='#' ) Get tickets
+			a.button.button-default-outline( href='#' ) VIP

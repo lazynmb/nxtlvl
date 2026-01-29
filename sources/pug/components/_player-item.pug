@@ -1,0 +1,27 @@
+mixin player-item(data)
+	.jp-player-init
+		.jp-jplayer
+		.jp-audio(role='application', aria-label='media player', class='jp-audio-' + data.trackCounter)
+			ul.jp-player-list
+				li.jp-player-list-item(data-jp-title= data.title,
+				data-jp-artist= data.author,
+				data-jp-mp3= data.srcMp3)
+
+			.jp-interface
+				.jp-button.jp-controls
+					button.jp-btn.jp-play(role='button', tabindex='0') play
+				.jp-playlist
+					ul
+						li  
+				.jp-time-rail
+					.jp-progress
+						.jp-seek-bar
+							.jp-play-bar
+						.jp-time-wrapper
+							.jp-duration
+
+			.jp-no-solution
+				span Update Required
+				|            To play the media you will need to either update your browser to a recent version or update your
+				a(href='http://get.adobe.com/flashplayer/', target='_blank')=' Flash plugin'
+				| .

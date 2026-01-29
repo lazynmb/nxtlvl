@@ -1,0 +1,92 @@
+mixin post-classic(obj)
+	// Post Classic
+	article.post.post-classic.box-md( class= obj.mod )&attributes(attributes)
+		a.post-classic-figure(href=links.post): +jpg( obj.img )
+		.post-classic-content
+			.post-classic-time: time( datetime= obj.time.datetime )= obj.time.dateText
+			h5.post-classic-title: a(href=links.post)=obj.title
+			p.post-classic-text= obj.text ? obj.text : 'A fridge full of organic vegetables purchased or harvested with the best of intentions, and then life gets busy'
+
+mixin post-modern(obj)
+	// Post Modern
+	article.post.post-modern.box-xxl( class= obj.mod )&attributes(attributes)
+		.post-modern-panel
+			div: a.post-modern-tag( href='#' )=obj.tag
+			div: time.post-modern-time( datetime= obj.time.datetime )= obj.time.dateText
+		h3.post-modern-title: a(href=links.post)=obj.title
+		a.post-modern-figure(href=links.post): +jpg( obj.img )
+		p.post-modern-text= obj.text ? obj.text : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet'
+		a.post-modern-link(href=links.post) Read more
+
+mixin post-creative(obj)
+	// Post Creative
+	article.post.post-creative( class= obj.mod )&attributes(attributes)
+		a.post-creative-figure(href=links.post): +jpg( obj.img )
+		.post-creative-content
+			h5.post-creative-title: a(href=links.post)!=obj.title
+			.post-creative-time: time( datetime= obj.time.datetime )= obj.time.dateText
+
+mixin post-lisa(obj)
+	// Post Creative
+	article.post.post-lisa( class= obj.mod )&attributes(attributes)
+		.post-lisa-content
+			a.post-lisa-tag( href='#' )=obj.tag
+			h4.post-lisa-title: a(href=links.post)=obj.title
+			.post-lisa-time: time( datetime= obj.time.datetime )= obj.time.dateText
+		a.post-lisa-figure(href=links.post): +jpg( obj.img )
+
+mixin post-minimal(obj)
+	// Post Minimal
+	article.post.post-minimal( class= obj.mod )&attributes(attributes)
+		.unit.unit-spacing-sm( class= obj.unit )
+			.unit-left: a.post-minimal-figure(href=links.post): +jpg( obj.img )
+			.unit-body
+				p.post-minimal-title: a(href=links.post)=obj.title
+				.post-minimal-time: time( datetime= obj.time.datetime )= obj.time.dateText
+
+mixin post-nikki(obj)
+	// Post Nikki
+	article.post.post-nikki( class= obj.mod )&attributes(attributes)
+		.unit.unit-spacing-lg( class= obj.unit )
+			.unit-left: a.post-nikki-figure(href=links.post): +jpg( obj.img )
+			.unit-body
+				.post-nikki-time: time( datetime= obj.time.datetime )= obj.time.dateText
+				.post-nikki-title: a(href=links.post)=obj.title
+
+mixin post-nikki-2(obj)
+	// Post Nikki 2
+	article.post.post-nikki.post-nikki-2( class= obj.mod )&attributes(attributes)
+		.post-nikki-figure: +jpg( obj.img )
+		.post-nikki-body: div
+			.post-nikki-time: time( datetime= obj.time.datetime )= obj.time.dateText
+			.post-nikki-title: a(href=links.post)=obj.title
+
+mixin post-video(obj)
+	// Post Video
+	article.post.post-video&attributes(attributes)
+		a.post-video-media( href= obj.videoLink, data-lightgallery='item' )
+			+img( obj.img ).post-video-img
+			svg.post-video-icon.icon-svg(width="64" height="64" viewbox="0 0 64 64")
+				path(d="M32 0C34.9375 0 37.7708 0.375 40.5 1.125C43.2292 1.875 45.7708 2.95833 48.125 4.375C50.4792 5.79167 52.6354 7.45833 54.5938 9.375C56.5521 11.2917 58.2292 13.4479 59.625 15.8438C61.0208 18.2396 62.0938 20.7917 62.8438 23.5C63.5938 26.2083 63.9792 29.0417 64 32C64 34.9375 63.625 37.7708 62.875 40.5C62.125 43.2292 61.0417 45.7708 59.625 48.125C58.2083 50.4792 56.5417 52.6354 54.625 54.5938C52.7083 56.5521 50.5521 58.2292 48.1562 59.625C45.7604 61.0208 43.2083 62.0938 40.5 62.8438C37.7917 63.5938 34.9583 63.9792 32 64C29.0625 64 26.2292 63.625 23.5 62.875C20.7708 62.125 18.2188 61.0521 15.8438 59.6562C13.4688 58.2604 11.3125 56.5938 9.375 54.6562C7.4375 52.7188 5.77083 50.5521 4.375 48.1562C2.97917 45.7604 1.90625 43.2188 1.15625 40.5312C0.40625 37.8438 0.0208333 35 0 32C0 29.0625 0.375 26.2292 1.125 23.5C1.875 20.7708 2.95833 18.2292 4.375 15.875C5.79167 13.5208 7.45833 11.3646 9.375 9.40625C11.2917 7.44792 13.4479 5.77083 15.8438 4.375C18.2396 2.97917 20.7917 1.90625 23.5 1.15625C26.2083 0.40625 29.0417 0.0208333 32 0ZM32 60C34.5833 60 37.0625 59.6667 39.4375 59C41.8125 58.3333 44.0417 57.3958 46.125 56.1875C48.2083 54.9792 50.0938 53.5208 51.7812 51.8125C53.4688 50.1042 54.9271 48.2188 56.1562 46.1562C57.3854 44.0938 58.3333 41.8646 59 39.4688C59.6667 37.0729 60 34.5833 60 32C60 29.4167 59.6667 26.9375 59 24.5625C58.3333 22.1875 57.3958 19.9583 56.1875 17.875C54.9792 15.7917 53.5208 13.9062 51.8125 12.2188C50.1042 10.5312 48.2188 9.07292 46.1562 7.84375C44.0938 6.61458 41.8646 5.66667 39.4688 5C37.0729 4.33333 34.5833 4 32 4C29.4167 4 26.9375 4.33333 24.5625 5C22.1875 5.66667 19.9583 6.60417 17.875 7.8125C15.7917 9.02083 13.9062 10.4792 12.2188 12.1875C10.5312 13.8958 9.07292 15.7812 7.84375 17.8438C6.61458 19.9062 5.66667 22.1354 5 24.5312C4.33333 26.9271 4 29.4167 4 32C4 34.5833 4.33333 37.0625 5 39.4375C5.66667 41.8125 6.60417 44.0417 7.8125 46.125C9.02083 48.2083 10.4792 50.1042 12.1875 51.8125C13.8958 53.5208 15.7812 54.9792 17.8438 56.1875C19.9062 57.3958 22.1354 58.3333 24.5312 59C26.9271 59.6667 29.4167 60 32 60ZM24 16L48 31.9062L24 48V16ZM28 40.5L40.7812 31.9375L28 23.4375V40.5Z")
+		.post-video-body
+			h4.title-modify.post-video-title= obj.title
+			.post-video-meta
+				div: .group-xs.group-middle
+					span.list-social-title Share
+					div: +widget-list([], '', 'list-social list-inline-sm')
+
+//- Post side
+	@param {object} data - data object
+	@param {string} data.img - post image
+	@param {string} data.title - post title
+	@param {string} data.text - post text
+mixin post-side( data )
+	// Post side
+	.post-side&attributes( attributes )
+		a.post-side-media( href='blog-post.html' )
+			+img( data.img ).post-side-img
+		.post-side-body
+			.post-side-date= data.date
+			h3.title-modify.post-side-title: a( href='blog-post.html' )= data.title
+			.post-side-text= data.text
+			a.post-side-link.link-underline( href='blog-post.html' ) More
