@@ -21112,6 +21112,7 @@ disabled look for disabled choices in the results dropdown
 .section-about-hero .about-hero-content * + .about-hero-title {
 	margin-top: 12px;
 	margin-left: 8.33333%;
+	margin-bottom: 24px;
 }
 
 .section-about-hero .about-hero-content * + .about-hero-text {
@@ -21157,7 +21158,7 @@ disabled look for disabled choices in the results dropdown
 		font-size: 34px;
 	}
 	.section-about-hero .about-hero-content * + .about-hero-text {
-		margin-top: 24px;
+		margin-top: 6px;
 		margin-left: 8.33333%;
 	}
 	.section-about-hero .about-hero-content * + .about-hero-actions {
