@@ -18805,6 +18805,27 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	background-size: cover;
 }
 
+.parallax-container + .section,
+.section + .section {
+	position: relative;
+	z-index: 2;
+	margin-top: 0;
+}
+
+@media (min-width: 768px) {
+	.parallax-container + .section,
+	.section + .section {
+		margin-top: 0;
+	}
+}
+
+@media (min-width: 992px) {
+	.parallax-container + .section,
+	.section + .section {
+		margin-top: 0;
+	}
+}
+
 .material-parallax {
 	position: absolute;
 	top: 0;

@@ -12,6 +12,38 @@
 	background-size: cover;
 }
 
+.parallax-container + .section {
+	position: relative;
+	z-index: 2;
+	margin-top: -480px;
+}
+
+.section + .section {
+	position: relative;
+	z-index: 2;
+	margin-top: -480px;
+}
+
+@include media-breakpoint-up(md) {
+	.parallax-container + .section {
+		margin-top: -640px;
+	}
+
+	.section + .section {
+		margin-top: -640px;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.parallax-container + .section {
+		margin-top: -800px;
+	}
+
+	.section + .section {
+		margin-top: -800px;
+	}
+}
+
 .material-parallax {
 	position: absolute;
 	top: 0;

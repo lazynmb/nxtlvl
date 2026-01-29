@@ -255,6 +255,43 @@
 				}
 			}
 		}
+
+		if ( !isNoviBuilder ) {
+			var $sections = $(".section");
+			if ( $sections.length ) {
+				var ticking = false;
+				var updateSectionParallax = function () {
+					var viewportTop = $window.scrollTop();
+					var viewportHeight = $window.height();
+
+					var cumulative = 0;
+					for ( var i = 0; i < $sections.length; i++ ) {
+						var $section = $($sections[i]);
+						if ( $section.hasClass("page-header") ) {
+							continue;
+						}
+						var offsetTop = $section.offset().top;
+						var height = $section.outerHeight();
+						var progress = (viewportTop + viewportHeight - offsetTop) / (viewportHeight + height);
+						if ( progress < 0 ) progress = 0;
+						if ( progress > 1 ) progress = 1;
+						var baseTranslate = (progress - 0.5) * -400;
+						cumulative += baseTranslate;
+						$section.css({ transform: "translate3d(0," + cumulative + "px,0)" });
+					}
+					ticking = false;
+				};
+
+				$window.on("scroll resize", function () {
+					if ( !ticking ) {
+						ticking = true;
+						window.requestAnimationFrame( updateSectionParallax );
+					}
+				});
+
+				updateSectionParallax();
+			}
+		}
 	});
 
 	// Initialize scripts that require a finished document
