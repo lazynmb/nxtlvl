@@ -21124,23 +21124,35 @@ disabled look for disabled choices in the results dropdown
 	overflow: visible;
 	background: #000000;
 	z-index: 0;
-	padding-top: 280px;
-	padding-bottom: 180px;
+	padding-top: 200px;
+	padding-bottom: 60px;
 }
 
 .section-nxtlvl:before {
 	content: '';
 	position: absolute;
 	left: -260px;
-	top: -200px;
+	top: -600px;
 	width: 2000px;
 	height: calc(100% + 800px);
-	background: radial-gradient(circle at bottom left, rgba(253, 255, 45, 0.5), rgba(253, 255, 45, 0.0) 50%, rgba(0, 0, 0, 0) 100%);
+	background: radial-gradient(circle at bottom left, rgba(253, 255, 45, 0.3), rgba(253, 255, 45, 0.0) 60%, rgba(0, 0, 0, 0) 100%);
 	pointer-events: none;
 	z-index: 0;
 }
 
-
+/*.section-nxtlvl::after {
+	content: "";
+	position: absolute;
+	left: -20%;
+	top: 60%;
+	width: 140%;
+	height: 20%;
+	background: linear-gradient(90deg, rgba(255,213,0,0.00), rgba(255,213,0,0.10), rgba(255,213,0,0.00));
+	transform: skewY(-6deg);
+	z-index: 0;
+}
+.section-nxtlvl > * { position: relative; z-index: 1; }
+*/
 /*
 .section-nxtlvl:after {
   content: '';
@@ -21338,14 +21350,15 @@ linear-gradient(120deg,
 }
 
 .section-nxtlvl .nxtlvl-gallery {
-	margin-top: 240px;
+	margin-top: 250px;
 	overflow: hidden;
-	height: 140px;
+	height: 160px;
 	width: 100%;
 	left: 0;
 	transform: none;
-	mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
-	-webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
+	mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, transparent 100%);
+	-webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, transparent 100%);
+	will-change: transform;
 }
 
 .section-nxtlvl .nxtlvl-gallery-track {
@@ -21355,10 +21368,7 @@ linear-gradient(120deg,
 	align-items: center;
 	width: max-content;
 	animation: nxtlvl-marquee 28s linear infinite;
-}
-
-.section-nxtlvl .nxtlvl-gallery {
-	will-change: transform;
+	overflow: visible;
 }
 
 .section-nxtlvl .nxtlvl-gallery:hover .nxtlvl-gallery-track {
@@ -21373,6 +21383,8 @@ linear-gradient(120deg,
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	flex: 0 0 auto;
 	overflow: hidden;
+	transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
 .section-nxtlvl .nxtlvl-gallery-item img {
@@ -21380,13 +21392,19 @@ linear-gradient(120deg,
 	height: 100%;
 	object-fit: cover;
 	display: block;
-	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	filter: sepia(1) saturate(1) hue-rotate(10deg);
+}
+
+.section-nxtlvl .nxtlvl-gallery-item:hover {
+	transform: scale(1.05);
+	box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+	filter: none;
 }
 
 .section-nxtlvl .nxtlvl-gallery-item:hover img {
 	transform: scale(1.05);
 	box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+	filter: none;
 }
 
 @keyframes nxtlvl-marquee {

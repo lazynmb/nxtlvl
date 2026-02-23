@@ -64,6 +64,11 @@
 	 * @param {object} elem - jQuery object
 	 * @return {boolean}
 	 */
+
+
+
+
+
 	function isScrolledIntoView ( elem ) {
 		if ( isNoviBuilder ) return true;
 		return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
