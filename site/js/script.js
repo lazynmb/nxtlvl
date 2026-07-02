@@ -225,6 +225,14 @@
 	}
 
 	// Initialize scripts that require a loaded page
+	// Timeout fallback to force preloader hide after 6 seconds
+	if (plugins.preloader.length && !isNoviBuilder) {
+		setTimeout(function () {
+			plugins.preloader.addClass('loaded');
+			windowReady = true;
+		}, 6000);
+	}
+
 	$window.on('load', function () {
 		// Page loader & Page transition
 		if (plugins.preloader.length && !isNoviBuilder) {
@@ -1244,6 +1252,27 @@
 			if (plugins.rdNavbar.attr("data-body-class")) {
 				document.body.className += ' ' + plugins.rdNavbar.attr("data-body-class");
 			}
+
+			var sectionOffsets = {
+				'#nxtlvl':  -100,
+				'#onas':    -200,
+				'#sposob':  -100,
+				'#uslugi':  -100,
+				'#oferta-szczegoly':  50,
+				'#kontakt': -100
+			};
+
+			$('.rd-navbar-nav a[href^="#"]').on('click', function () {
+				var href = $(this).attr('href');
+				var target = $(href);
+				if (!target.length) return;
+				var offset = sectionOffsets.hasOwnProperty(href) ? sectionOffsets[href] : -100;
+				setTimeout(function () {
+					$('html, body').stop().animate({
+						scrollTop: target.offset().top + offset
+					}, 400);
+				}, 0);
+			});
 		}
 
 		// Owl carousel

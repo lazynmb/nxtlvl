@@ -71,8 +71,11 @@
                       <!-- RD Navbar Dropdown-->
 
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#oferta">Oferta</a>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="#uslugi">Usługi</a>
                     </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#oferta-szczegoly">Oferta</a>
+                    </li>
+
                     <li class="rd-nav-item"><a class="rd-nav-link" href="#kontakt">Kontakt</a>
 
                     </li>
@@ -565,7 +568,7 @@
         </div>
       </section>
       <!-- Section oferta -->
-      <section id="oferta" class="section section-xl text-md-left section-oferta section-oferta--main" id="oferta">
+      <section id="uslugi" class="section section-xl text-md-left section-oferta section-oferta--main" id="oferta">
         <div class="about-artist__top container">
           <div class="row row-40 row-md-60 align-items-center justify-content-center justify-content-lg-between">
             <div class="section-oferta-all col-md-11 col-lg-8 col-xl-8">
@@ -662,28 +665,48 @@
           <div class="kontakt-inner">
             <div class="kontakt-header">
               <div class="kontakt-kicker">Zacznij teraz</div>
-              <h2 class="kontakt-title">Umów<br><span class="kontakt-title-accent">diagnozę</span></h2>
-              <p class="kontakt-desc">Napisz do mnie — omówimy twój etap i zdecydujemy, czy współpraca ma sens.</p>
+              <h2 class="kontakt-title">Napisz<br><span class="kontakt-title-accent">do nas</span></h2>
+              <p class="kontakt-desc">Zacznijmy od kontaktu.</p>
             </div>
-            <form class="kontakt-form" action="#" method="post" novalidate>
-              <div class="kontakt-fields">
-                <div class="kontakt-field-group">
-                  <label class="kontakt-field-label" for="kontakt-name">Imię</label>
-                  <input class="kontakt-field-input" type="text" id="kontakt-name" name="name" placeholder="Jak mam się do ciebie zwracać?" required/>
-                </div>
-                <div class="kontakt-field-group">
-                  <label class="kontakt-field-label" for="kontakt-email">Adres e-mail</label>
-                  <input class="kontakt-field-input" type="email" id="kontakt-email" name="email" placeholder="twoj@email.pl" required/>
-                </div>
-                <div class="kontakt-field-group kontakt-field-group--full">
-                  <label class="kontakt-field-label" for="kontakt-message">Treść</label>
-                  <textarea class="kontakt-field-input kontakt-field-textarea" id="kontakt-message" name="message" placeholder="Napisz kilka słów o swojej sytuacji..." required></textarea>
-                </div>
-              </div>
-              <div class="kontakt-submit">
-                <button class="button button-lg kontakt-btn" type="submit">Wyślij wiadomość</button>
-              </div>
-            </form>
+<form class="kontakt-form" action="#" method="post" novalidate>
+	<div class="kontakt-fields">
+		<div class="kontakt-field-group">
+			<label class="kontakt-field-label" for="kontakt-name">Imię</label>
+			<input class="kontakt-field-input" type="text" id="kontakt-name" name="name" placeholder="Jak mam się do ciebie zwracać?" required/>
+		</div>
+
+		<div class="kontakt-field-group">
+			<label class="kontakt-field-label" for="kontakt-email">Adres e-mail</label>
+			<input class="kontakt-field-input" type="email" id="kontakt-email" name="email" placeholder="twoj@email.pl" required/>
+		</div>
+
+<div class="kontakt-field-group kontakt-custom-select">
+	<label class="kontakt-field-label" for="kontakt-service">Nazwa usługi</label>
+
+	<input type="hidden" id="kontakt-service" name="service" value="">
+
+	<button class="kontakt-select-toggle" type="button">
+		<span class="kontakt-select-value">Wybierz usługę</span>
+		<span class="kontakt-select-arrow"></span>
+	</button>
+
+	<ul class="kontakt-select-options">
+		<li class="kontakt-select-option" data-value="usluga-1">Feedback</li>
+		<li class="kontakt-select-option" data-value="usluga-2">Diagnoza</li>
+		<li class="kontakt-select-option" data-value="usluga-3">Release</li>
+	</ul>
+</div>
+
+		<div class="kontakt-field-group kontakt-field-group--full">
+			<label class="kontakt-field-label" for="kontakt-message">Treść</label>
+			<textarea class="kontakt-field-input kontakt-field-textarea" id="kontakt-message" name="message" placeholder="Napisz kilka słów o swojej sytuacji..." required></textarea>
+		</div>
+	</div>
+
+	<div class="kontakt-submit">
+		<button class="button button-lg kontakt-btn" type="submit">Wyślij wiadomość</button>
+	</div>
+</form>
           </div>
         </div>
       </section>
@@ -847,5 +870,45 @@
     <div class="snackbars" id="form-output-global"></div>
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+	const customSelect = document.querySelector(".kontakt-custom-select");
+
+	if (!customSelect) return;
+
+	const toggle = customSelect.querySelector(".kontakt-select-toggle");
+	const valueText = customSelect.querySelector(".kontakt-select-value");
+	const hiddenInput = customSelect.querySelector("#kontakt-service");
+	const options = customSelect.querySelectorAll(".kontakt-select-option");
+
+	toggle.addEventListener("click", function () {
+		customSelect.classList.toggle("is-open");
+	});
+
+	options.forEach(function (option) {
+		option.addEventListener("click", function () {
+			const value = option.getAttribute("data-value");
+			const text = option.textContent;
+
+			hiddenInput.value = value;
+			valueText.textContent = text;
+
+			options.forEach(function (item) {
+				item.classList.remove("is-selected");
+			});
+
+			option.classList.add("is-selected");
+			customSelect.classList.add("has-value");
+			customSelect.classList.remove("is-open");
+		});
+	});
+
+	document.addEventListener("click", function (event) {
+		if (!customSelect.contains(event.target)) {
+			customSelect.classList.remove("is-open");
+		}
+	});
+});
+</script>
   </body>
 </html>
