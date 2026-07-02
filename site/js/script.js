@@ -74,6 +74,139 @@
 		return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
 	}
 
+	/* ===== HERO CAROUSEL JS =====
+   Działa z HTML:
+   .hero-carousel
+   .hero-carousel__slide
+   .hero-carousel__nav--prev / --next
+   .hero-carousel__counter
+*/
+
+(function () {
+  var carousels = document.querySelectorAll('.hero-carousel');
+  if (!carousels.length) return;
+
+  carousels.forEach(function (carousel) {
+    var slides = Array.prototype.slice.call(
+      carousel.querySelectorAll('.hero-carousel__slide')
+    );
+    var prevBtn = carousel.querySelector('.hero-carousel__nav--prev');
+    var nextBtn = carousel.querySelector('.hero-carousel__nav--next');
+    var counter = carousel.querySelector('.hero-carousel__counter');
+
+    if (!slides.length) return;
+
+    var current = 0;
+    var total = slides.length;
+    var autoplayMs = 4500;
+    var timer = null;
+
+    function render() {
+      for (var i = 0; i < total; i++) {
+        slides[i].classList.toggle('is-active', i === current);
+        slides[i].setAttribute('aria-hidden', i === current ? 'false' : 'true');
+      }
+
+    }
+
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      current = index;
+      render();
+    }
+
+    function next() {
+      goTo(current + 1);
+    }
+
+    function prev() {
+      goTo(current - 1);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = setInterval(next, autoplayMs);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        prev();
+        startAutoplay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        next();
+        startAutoplay();
+      });
+    }
+
+    // Klawiatura (gdy fokus jest na karuzeli lub jej elementach)
+    carousel.setAttribute('tabindex', '0');
+    carousel.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prev();
+        startAutoplay();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        next();
+        startAutoplay();
+      }
+    });
+
+    // Swipe touch
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var minSwipe = 40;
+
+    carousel.addEventListener(
+      'touchstart',
+      function (e) {
+        touchStartX = e.changedTouches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    carousel.addEventListener(
+      'touchend',
+      function (e) {
+        touchEndX = e.changedTouches[0].clientX;
+        var delta = touchEndX - touchStartX;
+
+        if (Math.abs(delta) >= minSwipe) {
+          if (delta > 0) {
+            prev();
+          } else {
+            next();
+          }
+          startAutoplay();
+        }
+      },
+      { passive: true }
+    );
+
+    // Pauza autoplay przy hover/focus
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+
+    // Start
+    render();
+    startAutoplay();
+  });
+})();
+
 	/**
 	 * @desc Calls a function when element has been scrolled into the view
 	 * @param {object} element - jQuery object
@@ -262,41 +395,67 @@
 		}
 
 		if ( !isNoviBuilder ) {
-			var $sections = $(".section");
-			if ( $sections.length ) {
-				var ticking = false;
-				var updateSectionParallax = function () {
-					var viewportTop = $window.scrollTop();
-					var viewportHeight = $window.height();
+			var sectionParallaxItems = [
+				{ node: document.querySelector( '.section-custom-1' ), offset: 70, speed: .12, hero: true },
+				{ node: document.getElementById( 'nxtlvl' ), offset: 110, speed: .9 },
+				{ node: document.getElementById( 'about-lazy' ), offset: 110, speed: .9 },
+				{ node: document.getElementById( 'sposob' ), offset: 110, speed: .9 },
+				{ node: document.getElementById( 'oferta' ), offset: 110, speed: .9 },
+				{ node: document.getElementById( 'kontakt' ), offset: 110, speed: .9 }
+			].filter( function ( item ) {
+				return item.node;
+			} );
 
-					var cumulative = 0;
-					for ( var i = 0; i < $sections.length; i++ ) {
-						var $section = $($sections[i]);
-						if ( $section.hasClass("page-header") ) {
-							continue;
+			if ( sectionParallaxItems.length ) {
+				var sectionParallaxTicking = false;
+				var updateSectionParallax = function () {
+					var scrollTop = $window.scrollTop();
+					var viewportHeight = $window.height();
+					var maxScrollTop = Math.max( $document.height() - viewportHeight, 0 );
+					var remainingScroll = Math.max( maxScrollTop - scrollTop, 0 );
+
+					for ( var i = 0; i < sectionParallaxItems.length; i++ ) {
+						var item = sectionParallaxItems[i];
+						var rect = item.node.getBoundingClientRect();
+						var translateY = 0;
+
+						if ( item.hero ) {
+							translateY = -Math.min( item.offset, scrollTop * item.speed );
+						} else {
+							var startEdge = viewportHeight + item.offset;
+							var endEdge = Math.min( viewportHeight * .18, 140 );
+							var progress = (startEdge - rect.top) / (startEdge - endEdge);
+							if ( progress < 0 ) progress = 0;
+							if ( progress > 1 ) progress = 1;
+							translateY = (1 - progress) * item.offset;
+							if ( remainingScroll < item.offset ) {
+								translateY = Math.min( translateY, remainingScroll );
+							}
 						}
-						var offsetTop = $section.offset().top;
-						var height = $section.outerHeight();
-						var progress = (viewportTop + viewportHeight - offsetTop) / (viewportHeight + height);
-						if ( progress < 0 ) progress = 0;
-						if ( progress > 1 ) progress = 1;
-						var baseTranslate = (progress - 0.5) * -400;
-						cumulative += baseTranslate;
-						$section.css({ transform: "translate3d(0," + cumulative + "px,0)" });
+
+						if ( Math.abs( translateY ) < .1 ) {
+							item.node.style.transform = '';
+						} else {
+							item.node.style.transform = 'translate3d(0,' + translateY.toFixed( 2 ) + 'px,0)';
+						}
 					}
-					ticking = false;
+
+					sectionParallaxTicking = false;
 				};
 
-				$window.on("scroll resize", function () {
-					if ( !ticking ) {
-						ticking = true;
+				var requestSectionParallax = function () {
+					if ( !sectionParallaxTicking ) {
+						sectionParallaxTicking = true;
 						window.requestAnimationFrame( updateSectionParallax );
 					}
-				});
+				};
 
-				updateSectionParallax();
+				$window.on( 'scroll resize', requestSectionParallax );
+				requestSectionParallax();
 			}
 		}
+
+
 	});
 
 	// Initialize scripts that require a finished document
@@ -1872,6 +2031,35 @@
 			multitoggles();
 		}
 
+		var nxtlvlGallery = document.querySelector('.section-nxtlvl .nxtlvl-gallery');
+		if (nxtlvlGallery) {
+			var nxtlvlItems = nxtlvlGallery.querySelectorAll('.nxtlvl-gallery-item');
+			var nxtlvlMinScale = 0.8;
+			var nxtlvlMaxScale = 1.1;
+			var nxtlvlPower = 1.4;
+			var nxtlvlUpdateScale = function () {
+				if (!nxtlvlItems.length) return;
+				var viewportCenter = window.innerWidth / 2;
+				var maxDistance = window.innerWidth / 2;
+				for (var i = 0; i < nxtlvlItems.length; i++) {
+					var rect = nxtlvlItems[i].getBoundingClientRect();
+					var itemCenter = rect.left + rect.width / 2;
+					var distance = Math.abs(viewportCenter - itemCenter);
+					var t = Math.max(0, 1 - distance / maxDistance);
+					var scale = nxtlvlMinScale + (nxtlvlMaxScale - nxtlvlMinScale) * Math.pow(t, nxtlvlPower);
+					nxtlvlItems[i].style.transform = 'scale(' + scale.toFixed(3) + ')';
+				}
+			};
+			var nxtlvlTick = function () {
+				if (isScrolledIntoView($(nxtlvlGallery))) {
+					nxtlvlUpdateScale();
+				}
+				window.requestAnimationFrame(nxtlvlTick);
+			};
+			window.requestAnimationFrame(nxtlvlTick);
+			$window.on('resize', nxtlvlUpdateScale);
+			$window.on('scroll', nxtlvlUpdateScale);
+		}
 
 		/**
 		 * jpFormatePlaylistObj
