@@ -23616,3 +23616,7 @@ body #oferta-szczegoly .oferta-szczegoly-card:focus-within {
 		width: 100%;
 	}
 }
+
+.kontakt-form-status {
+  color: #000;
+}
