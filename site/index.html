@@ -660,57 +660,103 @@
           <p class="oferta-szczegoly-note">Nie wiesz, co wybrać? Zacznij od diagnozy.</p>
         </div>
       </section>
-      <!-- Section kontakt -->
-      <section id="kontakt" class="section section-xl section-kontakt" id="kontakt">
-        <div class="container">
-          <div class="kontakt-inner">
-            <div class="kontakt-header">
-              <div class="kontakt-kicker">Zacznij teraz</div>
-              <h2 class="kontakt-title">Napisz<br><span class="kontakt-title-accent">do nas</span></h2>
-              <p class="kontakt-desc">Zacznijmy od kontaktu.</p>
-            </div>
-<form class="kontakt-form" action="https://formspree.io/f/mnjwpeyq" method="post" novalidate>
-	<div class="kontakt-fields">
-		<div class="kontakt-field-group">
-			<label class="kontakt-field-label" for="kontakt-name">Imię</label>
-			<input class="kontakt-field-input" type="text" id="kontakt-name" name="name" placeholder="Jak mam się do ciebie zwracać?" required/>
-		</div>
+<!-- Section kontakt -->
+<section id="kontakt" class="section section-xl section-kontakt">
+  <div class="container">
+    <div class="kontakt-inner">
+      <div class="kontakt-header">
+        <div class="kontakt-kicker">Zacznij teraz</div>
+        <h2 class="kontakt-title">Napisz<br><span class="kontakt-title-accent">do nas</span></h2>
+        <p class="kontakt-desc">Zacznijmy od kontaktu.</p>
+      </div>
 
-		<div class="kontakt-field-group">
-			<label class="kontakt-field-label" for="kontakt-email">Adres e-mail</label>
-			<input class="kontakt-field-input" type="email" id="kontakt-email" name="email" placeholder="twoj@email.pl" required/>
-		</div>
+      <form id="kontakt-form" class="kontakt-form" action="https://formspree.io/f/mnjwpeyq" method="post" novalidate>
+        <div class="kontakt-fields">
+          <div class="kontakt-field-group">
+            <label class="kontakt-field-label" for="kontakt-name">Imię</label>
+            <input class="kontakt-field-input" type="text" id="kontakt-name" name="name" placeholder="Jak mam się do ciebie zwracać?" required/>
+          </div>
 
-<div class="kontakt-field-group kontakt-custom-select">
-	<label class="kontakt-field-label" for="kontakt-service">Nazwa usługi</label>
+          <div class="kontakt-field-group">
+            <label class="kontakt-field-label" for="kontakt-email">Adres e-mail</label>
+            <input class="kontakt-field-input" type="email" id="kontakt-email" name="email" placeholder="twoj@email.pl" required/>
+          </div>
 
-	<input type="hidden" id="kontakt-service" name="service" value="">
+          <div class="kontakt-field-group kontakt-custom-select">
+            <label class="kontakt-field-label" for="kontakt-service">Nazwa usługi</label>
 
-	<button class="kontakt-select-toggle" type="button">
-		<span class="kontakt-select-value">Wybierz usługę</span>
-		<span class="kontakt-select-arrow"></span>
-	</button>
+            <input type="hidden" id="kontakt-service" name="service" value="">
 
-	<ul class="kontakt-select-options">
-		<li class="kontakt-select-option" data-value="usluga-1">Feedback</li>
-		<li class="kontakt-select-option" data-value="usluga-2">Diagnoza</li>
-		<li class="kontakt-select-option" data-value="usluga-3">Release</li>
-	</ul>
-</div>
+            <button class="kontakt-select-toggle" type="button">
+              <span class="kontakt-select-value">Wybierz usługę</span>
+              <span class="kontakt-select-arrow"></span>
+            </button>
 
-		<div class="kontakt-field-group kontakt-field-group--full">
-			<label class="kontakt-field-label" for="kontakt-message">Treść</label>
-			<textarea class="kontakt-field-input kontakt-field-textarea" id="kontakt-message" name="message" placeholder="Napisz kilka słów o swojej sytuacji..." required></textarea>
-		</div>
-	</div>
+            <ul class="kontakt-select-options">
+              <li class="kontakt-select-option" data-value="usluga-1">Feedback</li>
+              <li class="kontakt-select-option" data-value="usluga-2">Diagnoza</li>
+              <li class="kontakt-select-option" data-value="usluga-3">Release</li>
+            </ul>
+          </div>
 
-	<div class="kontakt-submit">
-		<button class="button button-lg kontakt-btn" type="submit">Wyślij wiadomość</button>
-	</div>
-</form>
+          <div class="kontakt-field-group kontakt-field-group--full">
+            <label class="kontakt-field-label" for="kontakt-message">Treść</label>
+            <textarea class="kontakt-field-input kontakt-field-textarea" id="kontakt-message" name="message" placeholder="Napisz kilka słów o swojej sytuacji..." required></textarea>
           </div>
         </div>
-      </section>
+
+        <div class="kontakt-submit">
+          <button class="button button-lg kontakt-btn" type="submit">Wyślij wiadomość</button>
+        </div>
+
+        <p id="kontakt-form-status" class="kontakt-form-status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const kontaktForm = document.getElementById("kontakt-form");
+  const kontaktFormStatus = document.getElementById("kontakt-form-status");
+
+  kontaktForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    kontaktFormStatus.textContent = "";
+
+    const data = new FormData(kontaktForm);
+
+    try {
+      const response = await fetch(kontaktForm.action, {
+        method: kontaktForm.method,
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        kontaktFormStatus.textContent = "Twoja wiadomość została wysłana.";
+        kontaktForm.reset();
+
+        const serviceInput = document.getElementById("kontakt-service");
+        const serviceValue = document.querySelector(".kontakt-select-value");
+
+        if (serviceInput) {
+          serviceInput.value = "";
+        }
+
+        if (serviceValue) {
+          serviceValue.textContent = "Wybierz usługę";
+        }
+      } else {
+        kontaktFormStatus.textContent = "Wystąpił błąd. Spróbuj ponownie.";
+      }
+    } catch (error) {
+      kontaktFormStatus.textContent = "Wystąpił błąd. Spróbuj ponownie.";
+    }
+  });
+</script>
       <!-- Preview-->
       <!-- <section class="section section-xxl bg-default">
         <div class="container">
